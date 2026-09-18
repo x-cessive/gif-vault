@@ -13,7 +13,7 @@ def led_pulse(img, i, color=(120, 230, 255), fast=False):
     a = int(150 + 90 * cyc(i, k=6 if fast else 2))
     for x, y in ((173, 192), (339, 192)):
         d.ellipse([x - 7, y - 7, x + 7, y + 7], fill=color + (a,))
-        d.ellipse([x - 3, y - 3, x + 3, y + 3], fill=(230, 250, 255, (255,)))
+        d.ellipse([x - 3, y - 3, x + 3, y + 3], fill=(230, 250, 255, 255))
     return img
 
 

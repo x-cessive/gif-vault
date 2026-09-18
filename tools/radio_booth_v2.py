@@ -463,7 +463,7 @@ def color_count(path):
     return len(im.getcolors(1 << 20) or [])
 
 
-def motion_audit(path, thresh=6.0):
+def motion_audit(path, thresh=1.0):
     im = Image.open(path)
     frames = []
     try:
@@ -474,8 +474,8 @@ def motion_audit(path, thresh=6.0):
         pass
     diffs = [np.abs(frames[k + 1] - frames[k]).mean() for k in range(len(frames) - 1)]
     diffs = np.array(diffs)
-    return dict(mean=float(diffs.mean()), active=float((diffs > thresh).mean()),
-                n=len(frames))
+    return dict(mean=float(diffs.mean()), min=float(diffs.min()),
+                active=float((diffs > thresh).mean()), n=len(frames))
 
 
 def qc_report(paths):
