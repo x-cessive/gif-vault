@@ -1,0 +1,122 @@
+{
+  "idle": {
+    "id": "IMyIiIIDqHpqIjdiXW",
+    "url": "https://giphy.com/gifs/IMyIiIIDqHpqIjdiXW"
+  },
+  "working": {
+    "id": "287Zl3gn8H1y7c8WhY",
+    "url": "https://giphy.com/gifs/287Zl3gn8H1y7c8WhY"
+  },
+  "listening": {
+    "id": "Y7omBsp8VWqSZ9TE05",
+    "url": "https://giphy.com/gifs/Y7omBsp8VWqSZ9TE05"
+  },
+  "speaking": {
+    "id": "ZCE4nmcnHSqi3OND8w",
+    "url": "https://giphy.com/gifs/ZCE4nmcnHSqi3OND8w"
+  },
+  "thinking": {
+    "id": "HSFv2PQrYfdfYjPzQO",
+    "url": "https://giphy.com/gifs/HSFv2PQrYfdfYjPzQO"
+  },
+  "success": {
+    "id": "QboD6MqoH43xEIfeeM",
+    "url": "https://giphy.com/gifs/QboD6MqoH43xEIfeeM"
+  },
+  "alert": {
+    "id": "B0h02dzUpll1fNVzRE",
+    "url": "https://giphy.com/gifs/B0h02dzUpll1fNVzRE"
+  },
+  "tired": {
+    "id": "rmu6CBJdjKCbfYJiFm",
+    "url": "https://giphy.com/gifs/rmu6CBJdjKCbfYJiFm"
+  },
+  "bitching": {
+    "id": "3zCJwgbJHsiuARNAWp",
+    "url": "https://giphy.com/gifs/3zCJwgbJHsiuARNAWp"
+  },
+  "pushing_to_github": {
+    "id": "VidcRWwQ1uaCVP7eCV",
+    "url": "https://giphy.com/gifs/VidcRWwQ1uaCVP7eCV"
+  },
+  "deploying": {
+    "id": "WLaRIfxSyTclMzcb5S",
+    "url": "https://giphy.com/gifs/WLaRIfxSyTclMzcb5S"
+  },
+  "debugging": {
+    "id": "AXuxKqMpsUzgwSVMvh",
+    "url": "https://giphy.com/gifs/AXuxKqMpsUzgwSVMvh"
+  },
+  "facepalm": {
+    "id": "dJC38JlspLjx3j02Hg",
+    "url": "https://giphy.com/gifs/dJC38JlspLjx3j02Hg"
+  },
+  "laughing": {
+    "id": "ZXQRvIkRkVuSfeRBEd",
+    "url": "https://giphy.com/gifs/ZXQRvIkRkVuSfeRBEd"
+  },
+  "smug": {
+    "id": "598ko8IG2FUHXX3gRD",
+    "url": "https://giphy.com/gifs/598ko8IG2FUHXX3gRD"
+  },
+  "drinking_coffee": {
+    "id": "4JM613VhgkiRF6xMK5",
+    "url": "https://giphy.com/gifs/4JM613VhgkiRF6xMK5"
+  },
+  "eating_snack": {
+    "id": "ef7YNVBJqgJE9g44oa",
+    "url": "https://giphy.com/gifs/ef7YNVBJqgJE9g44oa"
+  },
+  "dancing": {
+    "id": "4YmNjQl12arjjTaJIT",
+    "url": "https://giphy.com/gifs/4YmNjQl12arjjTaJIT"
+  },
+  "sleeping": {
+    "id": "tT1r8YGaqzOBuV7gpp",
+    "url": "https://giphy.com/gifs/tT1r8YGaqzOBuV7gpp"
+  },
+  "surprised": {
+    "id": "LOoIbqywovgdX3jUlM",
+    "url": "https://giphy.com/gifs/LOoIbqywovgdX3jUlM"
+  },
+  "shrugging": {
+    "id": "l8gPeTg0sjWua2mfPY",
+    "url": "https://giphy.com/gifs/l8gPeTg0sjWua2mfPY"
+  },
+  "scheming": {
+    "id": "GD8lk1tUfMYHLheGBD",
+    "url": "https://giphy.com/gifs/GD8lk1tUfMYHLheGBD"
+  },
+  "panic": {
+    "id": "oLEHOkCJQglkuF0boo",
+    "url": "https://giphy.com/gifs/oLEHOkCJQglkuF0boo"
+  },
+  "salute": {
+    "id": "ydmKeaCN36smC5ptuA",
+    "url": "https://giphy.com/gifs/ydmKeaCN36smC5ptuA"
+  },
+  "celebrating": {
+    "id": "3fHK7WuaovaadKdTOk",
+    "url": "https://giphy.com/gifs/3fHK7WuaovaadKdTOk"
+  },
+  "gaming": {
+    "id": "Y6zBQRpoGBZbMODCGQ",
+    "url": "https://giphy.com/gifs/Y6zBQRpoGBZbMODCGQ"
+  },
+  "rebooting": {
+    "id": "JPkSVSMHFWLUa3vlvC",
+    "url": "https://giphy.com/gifs/JPkSVSMHFWLUa3vlvC"
+  },
+  "overheating": {
+    "id": "bmjZMZbXllHAjeeMNo",
+    "url": "https://giphy.com/gifs/bmjZMZbXllHAjeeMNo"
+  },
+  "flexing": {
+    "id": "PFugGTlIuGQBUJnm08",
+    "url": "https://giphy.com/gifs/PFugGTlIuGQBUJnm08"
+  },
+  "goodbye": {
+    "id": "h0W6yzU1lvY6u5DRJc",
+    "url": "https://giphy.com/gifs/h0W6yzU1lvY6u5DRJc"
+  }
+}
