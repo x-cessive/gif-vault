@@ -14,7 +14,12 @@ import time
 import requests
 
 GIF_DIR = os.path.expanduser("~/workspace/your_files/gigi_otter")
-RESULTS = os.path.expanduser("~/workspace/gif-station/giphy_upload_results.json")
+RESULTS = os.path.expanduser(os.environ.get(
+    "GIPHY_RESULTS", "~/workspace/gif-station/giphy_upload_results.json"))
+
+# Canonical hashtag: every upload from the vault carries this first, so one
+# search pulls up all of our work on Giphy.
+CANONICAL_TAG = "xcessive"
 UPLOAD_URL = "https://upload.giphy.com/v1/gifs"
 
 STATES = [
@@ -31,7 +36,7 @@ def upload(state, api_key):
     path = os.path.join(GIF_DIR, f"gigi_office_{state}.gif")
     if not os.path.exists(path):
         return {"error": f"file missing: {path}"}
-    tags = "gigi, sovran, otter, " + state.replace("_", " ")
+    tags = f"{CANONICAL_TAG}, gigi, sovran, otter, " + state.replace("_", " ")
     for attempt in (1, 2):
         try:
             with open(path, "rb") as fh:
