@@ -8,6 +8,7 @@ Run from the repo root:  python3 tools/build_gallery.py
 """
 import json
 import os
+import re
 import sys
 
 from PIL import Image
@@ -59,10 +60,15 @@ def scan():
                     if isinstance(r, dict) and r.get("url") and stem.endswith(state):
                         giphy_url = r["url"]
                         break
+                tags = sorted(
+                    {t for t in re.split(r"[_-]+", stem.lower()) if t}
+                    | {project.lower(), set_name.lower()}
+                )
                 items.append({
                     "project": project,
                     "set": set_name,
                     "name": stem.replace("_", " "),
+                    "tags": tags,
                     "file": fn,
                     "gif": f"../projects/{project}/{set_name}/gifs/{fn}",
                     "thumb": f"thumbs/{project}/{set_name}/{stem}.png",
@@ -156,9 +162,11 @@ function drawChips(){chips.innerHTML='';
  [['all','all'],...projects.map(p=>[p,p])].forEach(([v,l])=>{
   const b=document.createElement('button');b.className='chip'+(fProject===v?' on':'');
   b.textContent=l==='all'?'all projects':l;b.onclick=()=>{fProject=v;draw();};chips.appendChild(b);});}
+function hay(i){return (i.name+' '+i.project+' '+i.set+' '+((i.tags||[]).join(' '))).toLowerCase();}
 function draw(){drawChips();
+ const terms=fQ.split(/\\s+/).filter(Boolean);
  shown=ITEMS.filter(i=>(fProject==='all'||i.project===fProject)&&
-  (!fQ||(i.name+' '+i.project+' '+i.set).toLowerCase().includes(fQ)));
+  (!terms.length||terms.every(t=>hay(i).includes(t)));
  count.textContent=shown.length+' / '+ITEMS.length+' gifs';
  grid.innerHTML='';empty.hidden=shown.length>0;
  shown.forEach((it,k)=>{const c=document.createElement('div');c.className='card';
