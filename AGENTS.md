@@ -58,3 +58,23 @@ This is the standing bar for every set in the vault:
 - Sounds are 22050 Hz mono 16-bit WAV, named to match their GIF's state.
 - Large binaries belong here (this repo exists for them); never commit large
   binaries to code repos like sovran-cli — stage, QC, then wire via manifest.
+
+---
+
+## UI/UX design
+
+Full library: https://raw.githubusercontent.com/x-cessive/design-library/main/DESIGN_LIBRARY.md
+
+**The rule.** AI output is bounded by reference quality. Never design a UI
+from a blank page:
+1. Pick 2-3 references from the library before building (galleries for the
+   visual bar, pattern libraries for the specific elements).
+2. Describe with patterns, not adjectives - link the pattern.
+3. If this repo has a design-system doc, it is the source of truth and wins
+   over generic references.
+
+**Brand for this repo.** 8-bit GIF standard: 128x128 grid, NEAREST x4 to 512x512, max 64 colors, 60 unique frames @24fps, seamless infinite loop.
+
+**Scope.** Applies to every user-facing surface built from this repo: app
+UI, web pages, generated docs/presentations, screenshots. Don't invent
+brand silently - propose it in the change and get it reviewed.
