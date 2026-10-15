@@ -9445,5 +9445,24 @@
     "height": 512,
     "size_kb": 932,
     "giphy_url": "https://giphy.com/gifs/iHpkmkCWwZMhq89VRO"
+  },
+  {
+    "project": "xcsv",
+    "set": "neon-logo-01",
+    "name": "xcsv neon logo",
+    "tags": [
+      "logo",
+      "neon",
+      "neon-logo-01",
+      "xcsv"
+    ],
+    "file": "xcsv_neon_logo.gif",
+    "gif": "../projects/xcsv/neon-logo-01/gifs/xcsv_neon_logo.gif",
+    "thumb": "thumbs/xcsv/neon-logo-01/xcsv_neon_logo.png",
+    "page_url": "https://x-cessive.github.io/gif-vault/projects/xcsv/neon-logo-01/gifs/xcsv_neon_logo.gif",
+    "width": 320,
+    "height": 200,
+    "size_kb": 31,
+    "giphy_url": null
   }
 ]
