@@ -96,3 +96,93 @@ duplicate checkouts are how an AI ends up building the wrong thing.
   `_archive/<name>-<date>/`, keep the last 2, older ones may be deleted.
 - This section governs hygiene. The repo's own build docs are the
   authority on where artifacts go.
+
+
+---
+
+## Parallel Worktree Operations (Worktree Fleet)
+
+Adopted 2026-10-22 as a pilot. Fleet kit: x-cessive/worktree-fleet.
+Script placement: CENTRAL CLONE, called by path — wt.sh and ralph.sh live in
+the worktree-fleet clone (~/workspace/worktree-fleet/ on this VM), they are
+not copied into this repo. Coordinator: Boone. Pilot merge policy is set in
+the verification gate below.
+
+This repo runs parallel AI agents, one per git worktree. This file is the
+contract every agent in this repo follows. The coordinator (human or lead
+agent) owns task assignment; worker agents own execution inside their
+worktree only.
+
+## Worktree law
+
+- One agent per worktree, one branch per task: `agent/<task-slug>`.
+- Never read, edit, or run builds inside another agent's worktree.
+- Create and retire worktrees only through `wt.sh` (spawn / done / prune).
+- `node_modules`, `target`, `.venv`, `vendor` in a worktree are symlinks to
+  the main checkout's shared cache. Never commit through them, never delete
+  them, never "fix" them from inside a worktree. `wt.sh` writes these names
+  to the repo's `info/exclude` at spawn time, so the links never appear in
+  git status and cannot be staged by accident.
+- Uncommitted work in a worktree is invisible to everyone else. Commit early,
+  commit on your own branch.
+
+## Task board
+
+- `TASKS.md` in the repo root is the board. Only the coordinator writes it.
+- Entry format: slug, one-line outcome, worktree, status
+  (QUEUED / ACTIVE / IN-REVIEW / DONE / KILLED), acceptance test.
+- An agent works only the task whose slug matches its worktree.
+
+## Before asking the human
+
+- Read this file, the repo README, and any CONTROL / STATE surfaces first.
+- Search the repo's docs and prior task logs for the answer.
+- Ask only when the answer is not in the repo or the choice changes scope,
+  cost, or a public surface.
+
+## Coordinator: judging agents by their questions
+
+- A structural question (about shape, ownership, interfaces) means the model
+  understands the problem. Let it run.
+- A confused question on a simple task means the model is too weak for it.
+  Reassign the task; do not coach it through.
+- A repeated or nonsensical question, or 10 minutes with no commit and no
+  clear question, means kill the worktree and reassign. Sunk cost is not a
+  reason to keep a lost agent running.
+
+## Verification gate — "done" means proven
+
+- The acceptance test named in TASKS.md defines done. Passing it is the
+  evidence; an agent's claim is not.
+- Never hardcode, stub, or mock a result to make a test pass. A test that
+  cannot fail is worse than no test.
+- UI work: screenshot the result and compare it against the spec before
+  claiming done.
+- CI must be green on the branch before merge. Merge policy: HUMAN MERGES
+  ONLY (pilot setting, 2026-10-22 — the coordinator never merges).
+  Version tags are always a separate, human-only step.
+
+## Skill upkeep
+
+- Any procedure that has to be explained twice gets written down once:
+  into this file, or into a skill doc under `docs/skills/`, in the same
+  change that second explanation happened in.
+- Weekly, the coordinator reviews merged branches and folds repeated fixes
+  into this file. Stale rules get deleted, not worked around.
+
+## Handoff format
+
+Every agent report, completion or blocked, uses this shape:
+
+    CURRENT STATE
+    EVIDENCE        (commands run, test output, commit SHAs)
+    BLOCKERS
+    UNKNOWNS        (stated, never silently filled in)
+    NEXT ACTION
+
+## Guardrails
+
+- No production deploys, no credential changes, no network changes from a
+  worktree without the human's explicit word.
+- A failing loop stops at its iteration cap and reports. It does not widen
+  its own scope, retry forever, or spawn helpers outside its worktree.
