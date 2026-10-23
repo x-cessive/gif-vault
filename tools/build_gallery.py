@@ -44,15 +44,21 @@ def scan():
                     continue
                 stem = fn[:-4]
                 src = os.path.join(gdir, fn)
-                with Image.open(src) as im:
-                    w, h = im.size
-                    im.seek(0)
-                    thumb = im.convert("RGB")
-                thumb.thumbnail((THUMB_W, THUMB_W), Image.NEAREST)
                 tdir = os.path.join(THUMBS, project, set_name)
                 os.makedirs(tdir, exist_ok=True)
                 tpath = os.path.join(tdir, stem + ".png")
-                thumb.save(tpath)
+                with Image.open(src) as im:
+                    w, h = im.size
+                    # Reuse an up-to-date thumbnail: only the frame
+                    # conversion and PNG save are skipped; the GIF
+                    # header read above still supplies w/h.
+                    fresh = (os.path.exists(tpath)
+                             and os.path.getmtime(tpath) >= os.path.getmtime(src))
+                    if not fresh:
+                        im.seek(0)
+                        thumb = im.convert("RGB")
+                        thumb.thumbnail((THUMB_W, THUMB_W), Image.NEAREST)
+                        thumb.save(tpath)
                 size_kb = round(os.path.getsize(src) / 1024)
                 # match a giphy result whose state key appears at the end of the stem
                 giphy_url = None
